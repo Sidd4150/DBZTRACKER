@@ -1,20 +1,18 @@
+import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Timeline from "./Timeline";
 
-function App() {
-
-  const pastDate = new Date("2018-03-25"); // DBS end date (local timezone)
+function Home() {
+  const pastDate = new Date("2018-03-25");
   const [now, setNow] = useState(new Date());
 
-  // Live clock (updates every second)
   useEffect(() => {
     const timer = setInterval(() => {
       setNow(new Date());
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
-  // Difference in days (for years/months/days since DBS)
   const diffInMs = now - pastDate;
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
@@ -22,12 +20,10 @@ function App() {
   const months = Math.floor((diffInDays % 365) / 30);
   const days = diffInDays % 30;
 
-  // User's CURRENT local time (not elapsed time)
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
 
-  // Timezone info (automatic by location)
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const offset = -now.getTimezoneOffset() / 60;
   const gmt = `GMT${offset >= 0 ? "+" : ""}${offset}`;
@@ -42,18 +38,15 @@ function App() {
           {years} Years, {months} Months, {days} Days
         </p>
 
-        {/* Local Time */}
         <div className="flex justify-center gap-4 mt-4 text-sm">
           <div className="bg-white/10 px-3 py-2 rounded-lg">
             <p className="text-lg font-bold">{String(hours).padStart(2, "0")}</p>
             <p className="text-xs opacity-70">Hours</p>
           </div>
-
           <div className="bg-white/10 px-3 py-2 rounded-lg">
             <p className="text-lg font-bold">{String(minutes).padStart(2, "0")}</p>
             <p className="text-xs opacity-70">Minutes</p>
           </div>
-
           <div className="bg-white/10 px-3 py-2 rounded-lg">
             <p className="text-lg font-bold animate-pulse">
               {String(seconds).padStart(2, "0")}
@@ -70,8 +63,25 @@ function App() {
           Your Timezone: {timeZone} ({gmt})
         </p>
 
+        {/* Link to Timeline */}
+        <Link
+          to="/timeline"
+          className="inline-block mt-4 text-orange-400 underline hover:text-orange-300"
+        >
+          View Dragon Ball Timeline →
+        </Link>
+
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/timeline" element={<Timeline />} />
+    </Routes>
   );
 }
 
