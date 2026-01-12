@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 function Timeline() {
   const timeline = [
@@ -11,7 +11,7 @@ function Timeline() {
   ];
 
   return (
-    
+
     <div className="min-h-screen text-white p-10 flex flex-col"
       style={{
         backgroundImage: `url("/bg-dbz-balls.jpg")`,
@@ -21,9 +21,9 @@ function Timeline() {
       }}
     >
       <h1 className="text-3xl font-bold text-center mb-10 text-white-400">
-          Dragon <span className="text-3xl font-bold text-center mb-10 text-400">Ball</span> Timeline
-        </h1>
-        
+        Dragon <span className="text-3xl font-bold text-center mb-10 text-400">Ball</span> Timeline
+      </h1>
+
       <div className="min-h-screen text-white p-10">
         {/* Back to Home Link */}
         <div className="mb-6">
@@ -35,7 +35,7 @@ function Timeline() {
           </Link>
         </div>
 
-        
+
 
         {/* Scrollable vertical container */}
         <div className="relative max-w-3xl mx-auto space-y-10">
@@ -46,9 +46,8 @@ function Timeline() {
           {timeline.map((item, index) => (
             <div
               key={index}
-              className={`relative w-5/12 p-5 rounded-xl shadow-md bg-white/10 border-l-4 border-orange-500 ${
-                index % 2 === 0 ? "ml-auto text-right" : "mr-auto text-left"
-              }`}
+              className={`relative w-5/12 p-5 rounded-xl shadow-md bg-white/10 border-l-4 border-orange-500 ${index % 2 === 0 ? "ml-auto text-right" : "mr-auto text-left"
+                }`}
             >
               <p className="text-sm text-gray-300">{item.year}</p>
               <h2 className="text-xl font-bold text-orange-400">{item.title}</h2>
@@ -56,9 +55,8 @@ function Timeline() {
 
               {/* Circle on the dashed line */}
               <div
-                className={`absolute top-5 w-4 h-4 bg-orange-500 rounded-full border-2 border-white ${
-                  index % 2 === 0 ? "-left-2" : "-right-2"
-                }`}
+                className={`absolute top-5 w-4 h-4 bg-orange-500 rounded-full border-2 border-white ${index % 2 === 0 ? "-left-2" : "-right-2"
+                  }`}
               ></div>
             </div>
           ))}
