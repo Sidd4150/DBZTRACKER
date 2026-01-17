@@ -1,8 +1,6 @@
 import { Tweet } from 'react-tweet'
 import { useEffect, useState } from "react";
 
-
-
 function SuperReturn() {
     // Calculate the number of days until the return of the DBS anime
 
@@ -63,8 +61,6 @@ function SuperReturn() {
                      */}
                 </div>
 
-
-
                 <p className="mt-1 text-xs opacity-60">
                     Your Timezone: {timeZone} ({gmt})
                 </p>
@@ -82,3 +78,5 @@ function SuperReturn() {
 }
 
 export default SuperReturn;
+
+

@@ -40,6 +40,15 @@ function Nav() {
 
                 <li>
                     <NavLink
+                        to="/game"
+                        className={({ isActive}) => isActive? "text-blue-400": "hover:text-orange-300"}
+                        >
+                            Guess the Character
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink
                         to="/timeline"
                         className={({ isActive }) => isActive ? "text-blue-400" : "hover:text-blue-300"}
                     >
