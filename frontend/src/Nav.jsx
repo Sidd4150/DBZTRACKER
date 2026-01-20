@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
+import icon from '/public/DragonBall-Tracker-LOGO.png';
 
 function Nav() {
     return (
-        <nav className="p-4 bg-slate-200 text-black flex justify-between items-center relative">
-            <div className="font-bold">DBS Tracker</div>
+        <nav className="p-4 bg-slate-000 text-black flex justify-between items-center relative">
+            <div className="font-bold">
+
+                <img src={icon} alt="IconDBZ tracker" className="w-40 h-auto"></img>
+            </div>
 
             <ul className="flex gap-x-6 items-center">
 
@@ -11,6 +15,7 @@ function Nav() {
                 <li className="relative group py-2">
                     <button className="flex items-center hover:text-blue-500 cursor-default">
                         DragonBall Trackers
+
                         <span className="ml-1 text-xs">▼</span>
                     </button>
 
@@ -41,9 +46,9 @@ function Nav() {
                 <li>
                     <NavLink
                         to="/game"
-                        className={({ isActive}) => isActive? "text-blue-400": "hover:text-orange-300"}
-                        >
-                            Guess the Character
+                        className={({ isActive }) => isActive ? "text-blue-400" : "hover:text-orange-300"}
+                    >
+                        Guess the Character
                     </NavLink>
                 </li>
 

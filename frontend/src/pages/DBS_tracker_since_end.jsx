@@ -30,10 +30,10 @@ function Home() {
   return (
     <div className="bg-[url('/bg-dbz-balls.jpg')] bg-cover h-screen flex items-center justify-center">
       <div className="bg-black/60 text-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold">DBSTRACKER</h1>
+        <h1 className="text-2xl font-bold text-yellow-400">DBSTRACKER</h1>
 
-        <div className="text">
-          <p className="text-lg font-bold">
+        <div >
+          <p className="text-2xl font-bold text-white-400 pt-8">
             {String(years).padStart(2, "0")} Years,{" "}
             {String(months).padStart(2, "0")} Months,{" "}
             {String(days).padStart(2, "0")} Days
@@ -87,7 +87,7 @@ function Home() {
         {/* Link to Timeline */}
         <Link
           to="/timeline"
-          className="inline-block mt-4 text-orange-400 underline hover:text-orange-300"
+          className="inline-block mt-4 text-yellow-400 underline hover:text-orange-300"
         >
           View Dragon Ball Timeline →
         </Link>

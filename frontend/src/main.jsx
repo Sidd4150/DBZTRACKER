@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Nav />
 
-    <App /> 
+    <App />
 
     <Footer />
   </BrowserRouter>
