@@ -7,25 +7,26 @@ function Nav() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="p-4 bg-white text-black flex justify-between items-center relative border-b border-slate-100">
+        <nav className="p-4 bg-black/30 backdrop-blur-md text-white flex justify-between items-center sticky top-0 z-[100] border-b border-white/10 shadow-lg">
             <NavLink to="/">
-                <div className="font-bold shrink-0">
-                    <img src={icon} alt="IconDBZ tracker" className="w-32 md:w-40 h-auto" />
+                <div className="font-bold shrink-0 transition-transform hover:scale-105 active:scale-95">
+                    <img src={icon} alt="IconDBZ tracker" className="w-32 md:w-40 h-auto filter drop-shadow-[0_0_8px_rgba(251,146,60,0.3)]" />
                 </div>
             </NavLink>
             {/* Mobile Hamburger Button */}
             <button
-                className="md:hidden p-2"
+                className="md:hidden p-2 text-white hover:text-orange-400 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-                {isMobileMenuOpen ? '✕' : '☰'}
+                <span className="text-2xl">{isMobileMenuOpen ? '✕' : '☰'}</span>
             </button>
 
             {/* Main Nav Links */}
             <ul className={`
-                ${isMobileMenuOpen ? "flex" : "hidden"} 
-                md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto 
-                bg-white md:bg-transparent p-4 md:p-0 gap-y-4 md:gap-x-6 items-start md:items-center shadow-lg md:shadow-none z-[60]
+                ${isMobileMenuOpen ? "flex scale-100 opacity-100" : "hidden md:flex scale-95 md:scale-100 opacity-0 md:opacity-100"} 
+                flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto 
+                bg-black/90 md:bg-transparent p-6 md:p-0 gap-y-4 md:gap-x-8 items-start md:items-center shadow-2xl md:shadow-none z-[60]
+                transition-all duration-300 origin-top
             `}>
 
                 <li
@@ -34,25 +35,25 @@ function Nav() {
                     onMouseLeave={() => setIsOpen(false)}
                 >
                     <button
-                        className="flex items-center hover:text-blue-500 w-full text-left py-2 md:py-0"
+                        className="flex items-center hover:text-orange-400 w-full text-left py-2 md:py-0 transition-colors font-medium tracking-wide"
                         onClick={(e) => {
-                            e.stopPropagation(); // Prevents conflicts
+                            e.stopPropagation();
                             setIsOpen(!isOpen);
                         }}
                     >
                         DragonBall Trackers
-                        <span className={`ml-1 text-xs transition-transform ${isOpen ? 'rotate-180' : ''}`}>▼</span>
+                        <span className={`ml-1 text-[10px] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
                     </button>
 
                     <ul className={`
-                        ${isOpen ? "block" : "hidden"} 
-                        md:absolute left-0 w-full md:w-48 bg-white md:border border-slate-200 
-                        rounded-md md:shadow-xl py-2 z-[70] transition-all
+                        ${isOpen ? "block opacity-100 translate-y-0" : "hidden md:block opacity-0 translate-y-2 pointer-events-none"} 
+                        md:absolute left-0 w-full md:w-56 bg-black/80 backdrop-blur-2xl md:border border-white/10 
+                        rounded-xl md:shadow-2xl py-3 z-[110] transition-all duration-300
                     `}>
                         <li>
                             <NavLink
                                 to="/super-return"
-                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+                                className="block px-5 py-2.5 text-sm text-white/70 hover:text-white hover:bg-orange-500/20 transition-all font-medium"
                                 onClick={() => { setIsOpen(false); setIsMobileMenuOpen(false); }}
                             >
                                 Days until DBS returns
@@ -63,7 +64,7 @@ function Nav() {
                                 to="/"
                                 end
                                 className={({ isActive }) =>
-                                    `block px-4 py-2 text-sm ${isActive ? "text-blue-600 bg-slate-50" : "text-gray-700 hover:bg-blue-50"}`
+                                    `block px-5 py-2.5 text-sm transition-all font-medium ${isActive ? "text-orange-400 bg-orange-500/10" : "text-white/70 hover:text-white hover:bg-orange-500/20"}`
                                 }
                                 onClick={() => { setIsOpen(false); setIsMobileMenuOpen(false); }}
                             >
@@ -76,17 +77,17 @@ function Nav() {
                 <li>
                     <NavLink
                         to="/game"
-                        className={({ isActive }) => isActive ? "text-blue-400 font-semibold" : "hover:text-orange-400"}
+                        className={({ isActive }) => `font-medium tracking-wide transition-colors ${isActive ? "text-orange-400" : "hover:text-orange-400"}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                     >
-                        Guess the Character
+                        Guess Game
                     </NavLink>
                 </li>
 
                 <li>
                     <NavLink
                         to="/timeline"
-                        className={({ isActive }) => isActive ? "text-blue-400 font-semibold" : "hover:text-blue-300"}
+                        className={({ isActive }) => `font-medium tracking-wide transition-colors ${isActive ? "text-orange-400" : "hover:text-orange-400"}`}
                         onClick={() => setIsMobileMenuOpen(false)}
                     >
                         Timeline
