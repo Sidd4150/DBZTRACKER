@@ -8,10 +8,11 @@ function Nav() {
 
     return (
         <nav className="p-4 bg-white text-black flex justify-between items-center relative border-b border-slate-100">
-            <div className="font-bold shrink-0">
-                <img src={icon} alt="IconDBZ tracker" className="w-32 md:w-40 h-auto" />
-            </div>
-
+            <NavLink to="/">
+                <div className="font-bold shrink-0">
+                    <img src={icon} alt="IconDBZ tracker" className="w-32 md:w-40 h-auto" />
+                </div>
+            </NavLink>
             {/* Mobile Hamburger Button */}
             <button
                 className="md:hidden p-2"
