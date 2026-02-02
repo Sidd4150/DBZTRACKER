@@ -43,6 +43,16 @@ function GuessCharacter() {
   const [message, setMessage] = useState("");
   const [score, setScore] = useState(0);
   const [locked, setLocked] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 200); // Show image for 0.5 seconds
+
+    return () => clearTimeout(timer);
+  }, [level]);
 
   const current = characters[level];
 
@@ -57,46 +67,67 @@ function GuessCharacter() {
       setMessage(`Wrong! ❌ It was ${current.name}`);
     }
 
+    setIsVisible(true); // Reveal on guess
+
     setTimeout(() => {
       setMessage("");
       setLocked(false);
       setLevel(level + 1);
-    }, 1500);
+    }, 200);
+  };
+
+  const handleRestart = () => {
+    setLevel(0);
+    setScore(0);
+    setMessage("");
+    setLocked(false);
   };
 
   if (level >= characters.length) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 bg-[url('/bg-dbz-balls.jpg')] bg-cover h-screen flex items-center justify-center">
-        <div className="bg-white rounded-xl p-10 opacity-95 shadow-lg text-center">
-          <h1 className="text-3xl font-bold mb-4">Game Over 🎮</h1>
-          <p className="text-xl">
+      <div className="min-h-screen flex items-center justify-center bg-[url('/bg-dbz-balls.jpg')] bg-cover px-4">
+        <div className="bg-white/90 rounded-xl p-6 sm:p-10 shadow-lg text-center max-w-sm w-full">
+          <h1 className="text-xl sm:text-3xl font-bold mb-2">Game Over 🎮</h1>
+          <p className="text-lg">
             You guessed {score} / {characters.length} correctly!
           </p>
+          <button
+            onClick={handleRestart}
+            className="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition-transform active:scale-95 shadow-md"
+          >
+            Play Again 🔄
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 bg-[url('/bg-dbz-balls.jpg')] bg-cover h-screen flex items-center justify-center">
-      <h1 className="text-2xl font-bold mb-2">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[url('/bg-dbz-balls.jpg')] bg-cover px-4 text-center">
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold mb-3">
         Level {level + 1} / {characters.length}
       </h1>
 
-      <div className="mb-6">
-        <img
-          src={current.image}
-          alt={current.name}
-          className="w-64 h-64 object-cover rounded-lg shadow-lg filter saturate-125 contrast-110 brightness-105"
-        />
+      <div className="mb-4 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center bg-white/10 rounded-lg shadow-lg overflow-hidden relative">
+        {isVisible ? (
+          <img
+            src={current.image}
+            alt={current.name}
+            className="max-w-full max-h-full object-contain"
+          />
+        ) : (
+          <div className="text-white/20 text-6xl sm:text-8xl font-black italic select-none">
+            ?
+          </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3 w-full max-w-xs sm:max-w-sm">
         {current.options.map((option) => (
           <button
             key={option}
             onClick={() => handleGuess(option)}
-            className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold text-white transition-colors"
+            className="bg-orange-500 hover:bg-orange-600 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-white active:scale-95 transition"
           >
             {option}
           </button>
@@ -104,7 +135,9 @@ function GuessCharacter() {
       </div>
 
       {message && (
-        <p className="mt-4 text-xl font-bold animate-pulse">{message}</p>
+        <p className="mt-3 text-base sm:text-lg font-bold animate-pulse">
+          {message}
+        </p>
       )}
     </div>
   );
