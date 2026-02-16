@@ -31,7 +31,7 @@ function SuperReturn() {
 
     return (
         /* 1. Added 'min-h-screen' and 'overflow-y-auto' to ensure mobile users can scroll */
-        <div className="bg-[url('/bg-dbz-balls.jpg')] bg-cover min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 p-6">
+        <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 p-6">
 
 
             <div className="bg-black/60 text-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">

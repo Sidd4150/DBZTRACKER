@@ -85,7 +85,7 @@ function GuessCharacter() {
 
   if (level >= characters.length) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[url('/bg-dbz-balls.jpg')] bg-cover px-4">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <div className="bg-white/90 rounded-xl p-6 sm:p-10 shadow-lg text-center max-w-sm w-full">
           <h1 className="text-xl sm:text-3xl font-bold mb-2">Game Over 🎮</h1>
           <p className="text-lg">
@@ -103,7 +103,7 @@ function GuessCharacter() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[url('/bg-dbz-balls.jpg')] bg-cover px-4 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-center  bg-cover px-4 text-center">
       <h1 className="text-lg sm:text-xl md:text-2xl font-bold mb-3">
         Level {level + 1} / {characters.length}
       </h1>

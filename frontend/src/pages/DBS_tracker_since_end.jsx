@@ -28,7 +28,7 @@ function Home() {
   const gmt = `GMT${offset >= 0 ? "+" : ""}${offset}`;
 
   return (
-    <div className="bg-[url('/bg-dbz-balls.jpg')] bg-cover h-screen flex items-center justify-center">
+    <div className=" h-screen flex items-center justify-center">
       <div className="bg-black/60 text-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
         <h1 className="text-2xl font-bold text-yellow-400">DBSTRACKER</h1>
 

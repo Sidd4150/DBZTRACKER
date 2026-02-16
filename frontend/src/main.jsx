@@ -8,10 +8,11 @@ import Footer from "./Footer";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <Nav />
+    <div className="bg-[url('/bg-dbz-balls.jpg')] bg-cover">
+      <Nav />
 
-    <App />
-
+      <App />
+    </div>
     <Footer />
   </BrowserRouter>
 );
